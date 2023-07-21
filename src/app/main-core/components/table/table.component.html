@@ -1,0 +1,9 @@
+<div class="container" fxLayoutAlign="space-around center">
+  <button mat-button (click)="getEmployeeDetails()">EmployeeDetails</button>
+  <button mat-button (click)="getJobDetails()">JobDetails</button>
+  <button mat-button (click)="getContactDetails()">ContactDetails</button>
+</div>
+<div>
+  <app-dynamictable [column]="columns" [record]="elementData" [displayedColumns]="displayedColumn">
+  </app-dynamictable>
+</div>

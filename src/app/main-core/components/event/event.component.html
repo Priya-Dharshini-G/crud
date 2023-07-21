@@ -1,0 +1,55 @@
+<div fxLayoutAlign="end end" class="addBtn">
+  <mat-icon (click)="openEnd(content)">add</mat-icon>
+</div>
+<div *ngIf="elementData.length">
+  <app-dynamictable [column]="columns" [record]="elementData" [displayedColumns]="displayedColumn">
+  </app-dynamictable>
+</div>
+
+<ng-template #content>
+  <div mat-dialog-title class="mat-heading" fxLayout="row">
+    <h2 class="dialog-head">Add Events</h2>
+    <mat-icon class="close-btn" [mat-dialog-close]>close</mat-icon>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="formContent">
+      <form [formGroup]="eventform">
+        <div fxLayoutGap="10px">
+          <mat-label fxFlex="40%">Event_Name</mat-label>
+          <mat-form-field>
+            <input matInput formControlName="Event_name" fxFlex="60%">
+            <mat-error>
+              {{msg?.FIELD_REQUIRED}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayoutGap="10px">
+          <mat-label fxFlex="40%">Event_Date</mat-label>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" formControlName="Event_date" fxFlex="60%">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error
+              *ngIf="eventform?.get('Event_Date')?.hasError('required') && !eventform?.get('Event_Date')?.hasError('matDatepickerParse')"
+              class="requiredError">
+              {{msg?.FIELD_REQUIRED}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayoutGap="10px">
+        <mat-label fxFlex="40%">Description</mat-label>
+        <mat-form-field>
+            <textarea matInput formControlName="description" fxFlex="60%"></textarea>
+            <mat-error>
+              {{msg?.FIELD_REQUIRED}}
+            </mat-error>
+          </mat-form-field>
+        </div> 
+      </form>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button [mat-dialog-close] class="closeBtn">No</button>
+    <button mat-button [mat-dialog-close]='true' class="mataction">Yes</button>
+  </mat-dialog-actions>
+</ng-template>

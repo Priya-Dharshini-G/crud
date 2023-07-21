@@ -1,0 +1,14 @@
+import { Component, Input, ViewChild ,Inject} from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
+@Component({
+  selector: 'app-dialog-box',
+  templateUrl: './dialog-box.component.html',
+  styleUrls: ['./dialog-box.component.scss']
+})
+export class DialogBoxComponent {
+constructor(@Inject(MAT_DIALOG_DATA) public data:any){}
+}

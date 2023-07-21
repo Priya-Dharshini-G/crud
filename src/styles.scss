@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url('./assets/loginback.jpg');
+}
+.mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input, .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+max-width: 100% !important;
+height: 24px !important;
+}
+.mdc-text-field--filled .mdc-line-ripple::after {
+  border-bottom-color: rgb(199, 199, 199);
+}
+.mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: unset;
+}
+.mat-mdc-raised-button.mat-unthemed {
+  --mdc-protected-button-container-color: unset;
+}
+.mat-drawer-inner-container {
+  overflow: hidden !important;
+}
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: unset !important;
+}
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  box-shadow: unset !important;
+}
+// .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+//   padding-top: 0px !important;
+//   padding-bottom: 0px !important;
+// }
+// .mat-mdc-form-field-infix {
+//   min-height: 32px !important;
+// }
+// .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label{
+//   position: absolute;
+//   top: 15px;
+//   left: 15px;
+// }
+// .mat-mdc-select-arrow svg {
+//   top: 130% !important;
+// }
+// ::ng-deep .mat-form-field-underline {
+//   display: none !important;
+// }
+// .mat-mdc-form-field .mat-focused .mat-primary .mat-mdc-select-arrow{
+//   color:grey !important;
+// }
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

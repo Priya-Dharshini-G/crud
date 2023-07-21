@@ -1,0 +1,110 @@
+.navIcon{
+  padding:0px 10px 0px 0px;
+  color:white;
+}
+.navtool{
+  background-color: indigo;
+  color:white;
+}
+mat-sidenav{
+  width:220px;
+  background-color:white;
+  padding:10px;
+}
+mat-sidenav a{
+margin:9px 62px 0px 0px;
+text-decoration: none;
+color:black;
+font-weight: 500;
+width: 200px;
+height: 40px;
+}
+mat-sidenav-content{
+overflow-x: hidden;
+}
+a:hover{
+  background-color: honeydew;
+}
+.sideContainer{
+  border-radius:20px;
+  margin:10px;
+  margin-left:20px;
+}
+.menu{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left:40px;
+  margin-top: 30px;
+}
+.search{
+  outline: none;
+  height:25px;
+  border-radius:10px;
+  border:none;
+  position: relative;
+  padding:5px;
+}
+.spacer{
+  flex:1 1 auto;
+}
+.logout_btn{
+  padding:10px;
+  cursor: pointer;
+}
+.searchIcon{
+  color:grey;
+  position:absolute;
+  right: 18px;
+  margin: 7px;
+}
+.profile{
+  height:45px;
+  width:45px;
+  border-radius:45px;
+  background-color: white;
+  cursor:pointer;
+}
+.profile img{
+  border-radius:40px;
+}
+.subhead{
+  font-weight:500;
+}
+.userDetails img{
+  border-radius:100px;
+}
+.changepwd{
+  cursor:pointer;
+  font-size:small;
+  line-height: 50px;
+}
+.changepwd:hover{
+  font-weight: 500;
+}
+.usr-mail{
+  font-weight:800;
+}
+.changepwd-btn{
+  background-color: cornflowerblue;
+}
+.offcanvas-header{
+  background-color:cornflowerblue ;
+}
+.changepwdblock{
+  background-color: honeydew;
+  padding: 10px;
+}
+.spanclass{
+  margin-bottom:-8px;
+  margin-left:8px;
+}
+.iconclass{
+ color:lightgray;
+ margin-left:20px;
+}
+.change_profile{
+  position:absolute;
+  
+}

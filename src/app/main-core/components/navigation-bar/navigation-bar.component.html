@@ -1,0 +1,103 @@
+<mat-toolbar class="navtool">
+  <button mat-icon-button fxHide.gt-sm fxShow="true"
+  (click)="sidenav.toggle()"><mat-icon>view_headline</mat-icon></button>
+  <!-- <mat-icon class="navIcon">work</mat-icon> -->
+   Just Create
+  <span class="spacer"></span>
+  <i class="bi bi-box-arrow-right logout_btn" routerLink="/signIn"></i>
+  <div class="profile" (click)="openEnd(content)">
+    <img src="http://localhost:3000/{{profileImg}}" height="45px" width="45px">
+    <!-- <mat-icon>camera_enhance</mat-icon> -->
+  </div>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened >
+    <a class="menu" routerLink="dashboard" fxLayoutAlign="start center" fxLayout="row">
+      <mat-icon class="iconclass">dashboard</mat-icon>
+      <p class="spanclass">Dashboard</p>
+    </a>
+    <a class="menu" routerLink="emptable" fxLayoutAlign="start center" fxLayout="row">
+      <mat-icon class="iconclass">group</mat-icon>
+      <p class="spanclass">Employees</p>
+    </a>
+    <a  class="menu" routerLink="roletable" fxLayoutAlign="start center" fxLayout="row">
+      <mat-icon class="iconclass">category</mat-icon>
+      <p class="spanclass">Role</p>
+    </a>
+    <a  class="menu" routerLink="depttable" fxLayoutAlign="start center" fxLayout="row">
+      <mat-icon class="iconclass">table_chart</mat-icon>
+      <p class="spanclass">Deparment</p>
+    </a>
+    <a  class="menu" routerLink="event" fxLayoutAlign="start center" fxLayout="row">
+      <mat-icon class="iconclass">event</mat-icon>
+      <p class="spanclass">Events</p>
+    </a>
+    <a  class="menu" routerLink="generalInfo" fxLayoutAlign="start center" fxLayout="row">
+      <mat-icon class="iconclass">bar_chart</mat-icon>
+      <p class="spanclass">General Info</p>
+    </a>
+    <a  class="menu" routerLink="/signIn" fxLayoutAlign="start center" fxLayout="row">
+      <mat-icon class="iconclass">person</mat-icon>
+      <p class="spanclass">LogOut</p>
+    </a>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height:89.5vh" class="sideContainer"><router-outlet></router-outlet></div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #content let-offcanvas>
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title">Profile Info</h4>
+    <mat-icon (click)="offcanvas.dismiss('Cross click')">close</mat-icon>
+  </div>
+  <div class="offcanvas-body">
+    <p class="subhead">Hello <span> {{userData.firstname}}</span>&hellip;</p>
+    <div class="userDetails" fxLayoutAlign="center center" fxLayout="column">
+      <img src="http://localhost:3000/{{profileImg}}" height="100px" width="100px">
+      <mat-icon class="change_profile">camera_enhance</mat-icon>
+      <h2>{{userData.firstname}} {{userData.lastname}}</h2>
+      <h5 class="usr-mail">{{userData.email}}</h5>
+    </div>
+    <p class="changepwd" (click)="onShow()">Change Password</p>
+    <div *ngIf="changepwdblock" class="changepwdblock">
+      <form [formGroup]="changepasswordForm">
+      <div  fxLayout="column">
+        <div  fxLayout="row" fxFlex="100%" fxLayoutGap="10px">
+          <div fxFlex="30%">
+            <mat-label>New Password</mat-label>
+          </div>
+          <div fxFlex="55%">
+            <mat-form-field>
+              <input matInput formControlName="newPassword">
+              <mat-error>
+                {{message?.FIELD_REQUIRED}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div  fxLayout="row" fxFlex="100%" fxLayoutGap="10px">
+          <div fxFlex="30%">
+            <mat-label>Confirm Password</mat-label>
+          </div>
+          <div fxFlex="55%">
+            <mat-form-field>
+              <input matInput formControlName="password">
+              <mat-error *ngIf="changepasswordForm?.get('password')?.hasError('required')">
+                {{message?.FIELD_REQUIRED}}
+              </mat-error>
+              <mat-error *ngIf="changepasswordForm?.get('password')?.hasError('mismatch')">
+                 {{message?.MISMATCH}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div> 
+      </div>
+      <div fxLayoutAlign="center center"><button mat-button class="changepwd-btn" (click)="onChangePasswrd()">Apply</button></div>
+    </form>
+    </div>
+    <div class="text-end">
+      <button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Close click')">Close</button>
+    </div>
+  </div>
+</ng-template>

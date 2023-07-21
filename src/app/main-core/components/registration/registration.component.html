@@ -1,0 +1,119 @@
+<div fxLayoutAlign="end end">
+  <button mat-raised-button  (click)="onExit()">Back</button>
+</div>
+<div class="container" fxLayout="column">
+  <form [formGroup]="employeeDetails" *ngIf="employeeDetails" class="empform">
+    <div class="ftrow" fxLayout="row" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
+      <div fxLayout="row" fxFlex="50%" fxLayout.lt-sm="column">
+        <mat-label fxFlex="40%" data-control="firstname">FirstName</mat-label>
+        <mat-form-field class="example-full-width" appearance="outline" fxFlex="60%">
+          <input matInput formControlName="firstname">
+          <mat-error *ngIf="employeeDetails?.get('firstname')?.hasError('required')">
+            {{msg?.FIELD_REQUIRED}}
+          </mat-error>
+          <mat-error *ngIf="employeeDetails?.get('firstname')?.hasError('pattern')">
+            {{msg?.INVALID_DATA}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxFlex="50%" fxLayout.lt-sm="column">
+        <mat-label fxFlex="40%" data-control="lastname">LastName</mat-label>
+        <mat-form-field class="example-full-width" appearance="outline" fxFlex="60%">
+          <input matInput formControlName="lastname">
+          <mat-error *ngIf="employeeDetails?.get('lastname')?.hasError('required')">
+            {{msg?.FIELD_REQUIRED}}
+          </mat-error>
+          <mat-error *ngIf="employeeDetails?.get('lastname')?.hasError('pattern')">
+            {{msg?.INVALID_DATA}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="ftrow" fxLayout="row" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
+      <div fxLayout="row" fxFlex="50%" fxLayout.lt-sm="column">
+        <mat-label fxFlex="40%" data-control="email">Email</mat-label>
+        <mat-form-field class="example-full-width" appearance="outline" fxFlex="60%">
+          <input matInput formControlName="email">
+          <mat-error>
+            {{msg?.FIELD_REQUIRED}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxFlex="50%" fxLayout.lt-sm="column">
+        <mat-label fxFlex="40%" data-control="role">Role</mat-label>
+        <mat-form-field class="example-full-width" appearance="outline" fxFlex="60%">
+          <mat-select formControlName="roleId">
+            <mat-option *ngFor="let x of role" [value]="x.id">{{x?.name}}</mat-option>
+          </mat-select>
+          <mat-error>
+            {{msg?.FIELD_REQUIRED}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="ftrow" fxLayout="row" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
+      <div fxLayout="row" fxFlex="50%" fxLayout.lt-sm="column">
+        <mat-label fxFlex="40%" data-control="department">Department</mat-label>
+        <mat-form-field class="example-full-width" appearance="outline" fxFlex="60%">
+          <mat-select formControlName="departmentId">
+            <mat-option *ngFor="let x of department" [value]="x.id">{{x?.name}}</mat-option>
+          </mat-select>
+          <mat-error>
+            {{msg?.FIELD_REQUIRED}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxFlex="50%" fxLayout.lt-sm="column">
+        <mat-label fxFlex="40%" data-control="password">Password</mat-label>
+        <mat-form-field class="example-full-width" appearance="outline" fxFlex="60%">
+          <input matInput formControlName="password">
+          <mat-error>
+            {{msg?.FIELD_REQUIRED}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="ftrow" fxLayout="row" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
+      <div fxLayout="row" fxFlex="50%" fxLayout.lt-sm="column">
+        <mat-label fxFlex="40%" data-control="dob">DateOfBirth</mat-label>
+        <mat-form-field class="example-full-width" appearance="outline" fxFlex="60%">
+          <input matInput [matDatepicker]="picker" formControlName="dob">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error
+            *ngIf="employeeDetails?.get('dob')?.hasError('required') && !employeeDetails?.get('dob')?.hasError('matDatepickerParse')"
+            class="requiredError">
+            {{msg?.FIELD_REQUIRED}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxFlex="50%" fxLayout.lt-sm="column">
+        <mat-label fxFlex="40%" data-control="salary">Salary</mat-label>
+        <mat-form-field class="example-full-width" appearance="outline" fxFlex="60%">
+          <input matInput formControlName="salary">
+          <mat-error  class="requiredError">
+            {{msg?.FIELD_REQUIRED}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="ftrow" fxLayout="row" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
+      <div fxLayout="row" fxFlex="50%" fxLayout.lt-sm="column">
+        <mat-label fxFlex="40%" data-control="Employee_Code">Employee_Code</mat-label>
+        <mat-form-field class="example-full-width" appearance="outline" fxFlex="60%">
+          <input matInput formControlName="Employee_Identification_Code">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxFlex="50%" fxLayout.lt-sm="column">
+        <mat-label fxFlex="40%" data-control="hire_date">HireDate</mat-label>
+        <mat-form-field class="example-full-width" appearance="outline" fxFlex="60%">
+          <input matInput formControlName="hire_date">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <button mat-raised-button (click)="OnSubmit()">{{update? 'Update' : 'Submit'}}</button>
+    </div>
+
+  </form>
+</div>

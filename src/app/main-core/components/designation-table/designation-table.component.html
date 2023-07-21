@@ -1,0 +1,40 @@
+<div fxLayoutAlign="end end" class="addBtn">
+  <mat-icon (click)="addDept()">add</mat-icon>
+</div>
+<div *ngIf="elementData.length">
+  <app-dynamictable [column]="columns" [record]="elementData" [actionArray]=" actionArray"
+   [displayedColumns]="displayedColumn" (actionEmit)="onEmit($event)">
+  </app-dynamictable>
+</div>
+<ng-template #depttemplate>
+  <h1 mat-dialog-title class="mat-heading">Add Department
+    <span><mat-icon [mat-dialog-close] class="close-btn">close</mat-icon></span>
+  </h1>
+  <mat-dialog-content>
+    <form [formGroup]="editform" class="matContent">
+     <mat-form-field>
+      <mat-label>Department</mat-label>
+      <input matInput formControlName="name">
+     </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button [mat-dialog-close]="false">Cancel</button>
+    <button mat-button  [mat-dialog-close]="true" class="mataction">Add</button>
+  </mat-dialog-actions>
+  </ng-template>
+  <ng-template #edittemplate>
+    <h1 mat-dialog-title>Edit Department</h1>
+    <mat-dialog-content>
+      <form [formGroup]="editform">
+       <mat-form-field>
+        <mat-label>Department</mat-label>
+        <input matInput formControlName="name" value='deptData.name'>
+       </mat-form-field>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-stroked-button [mat-dialog-close]="false">Cancel</button>
+      <button mat-raised-button color="primary" [mat-dialog-close]="true">Apply</button>
+    </mat-dialog-actions>
+    </ng-template>

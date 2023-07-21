@@ -1,0 +1,60 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="container">
+   <h2 class="signInheader">LogIn</h2>
+   <form fxLayout="column" [formGroup]="LoginForm">
+      <div fxLayout="row" fxFlex="30%">
+         <mat-label fxFlex="30%" class="userlabel" fxLayoutAlign="center center">UserName:</mat-label>
+         <mat-form-field fxFlex="80%" class="formfield">
+            <input matInput placeholder="UserName" formControlName="email">
+            <mat-error>
+            {{this.msg?.FIELD_REQUIRED}}
+            </mat-error>
+         </mat-form-field>
+      </div>
+      <div fxLayout="row" fxFlex="30%">
+         <mat-label fxFlex="30%" class="userlabel" fxLayoutAlign="center center">Password:</mat-label>
+         <mat-form-field fxFlex="80%" class="formfield">
+            <input matInput placeholder="password" type="password" formControlName="password">
+            <mat-error>
+               {{this.msg?.FIELD_REQUIRED}}
+            </mat-error>
+         </mat-form-field>
+      </div>
+      <br>
+      <div fxLayoutAlign="center center">
+         <button mat-raised-button class="loginBtn" (click)="onLog()">LogIn</button>
+      </div>
+   </form>
+</div>
+<!-- <div fxLayoutAlign="center space-around"  style="margin-top: auto;">
+<mat-card  MatCardAppearance = 'raised'>
+   <mat-card-header class="matheader" >
+      <h1 class="mattitle">LogIn</h1>
+    </mat-card-header>
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center" class="container">
+      <form fxLayout="column" [formGroup]="LoginForm" class="formContainer">
+         <div fxLayout="row" fxFlex="30%">
+            <mat-label fxFlex="30%" class="userlabel" fxLayoutAlign="center center">UserName:</mat-label>
+            <mat-form-field fxFlex="80%" class="formfield">
+               <input matInput placeholder="UserName" formControlName="email">
+               <mat-error>
+               {{this.msg?.FIELD_REQUIRED}}
+               </mat-error>
+            </mat-form-field>
+         </div>
+         <div fxLayout="row" fxFlex="30%">
+            <mat-label fxFlex="30%" class="userlabel" fxLayoutAlign="center center">Password:</mat-label>
+            <mat-form-field fxFlex="80%" class="formfield">
+               <input matInput placeholder="password" type="password" formControlName="password">
+               <mat-error>
+                  {{this.msg?.FIELD_REQUIRED}}
+               </mat-error>
+            </mat-form-field>
+         </div>
+         <br>
+         <div fxLayoutAlign="center center">
+            <button mat-button class="loginBtn" (click)="onLog()">LogIn</button>
+         </div>
+      </form>
+    </mat-card-content>
+</mat-card>
+</div> -->

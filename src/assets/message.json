@@ -1,0 +1,5 @@
+{
+  "FIELD_REQUIRED":"This field is required",
+  "INVALID_DATA":"This field allow character only",
+  "MISMATCH":"Password Mismatch"
+}

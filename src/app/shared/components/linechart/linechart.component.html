@@ -1,0 +1,9 @@
+<mat-card  style="height:50vh;width:500px;padding:20px;background-color: honeydew;">
+  <canvas [id]="canvaID">{{mychart}}</canvas>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-btn">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let x of chartChoice" (click)="onSelectChart(x)">{{x.Label}}</button>
+  </mat-menu>
+</mat-card>

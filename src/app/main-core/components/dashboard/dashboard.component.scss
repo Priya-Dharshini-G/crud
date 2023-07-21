@@ -1,0 +1,58 @@
+.counts{
+  margin:0px 0px -5px;
+  font-weight: 500;
+}
+.details-icon{
+  width:50px;
+  height:50px;
+  border-radius:50px;
+  background-color: white;
+}
+.details{
+  border-radius:5px; 
+  padding:20px;
+  background-color:grayscale($color: #ebebeb);
+}
+.count-name{
+  color:grey;
+  font-weight: 400;
+}
+.select-head{
+  font-weight: 500;
+}
+.range-btn{
+  background-color: cornflowerblue;
+}
+.events-head{
+  background-color:cornflowerblue;
+  border:1px solid rgb(182, 181, 181);
+}
+.heading{
+  margin-left:5px;
+  margin-top:5px;
+}
+.event-container{
+border:1px solid rgb(209, 236, 209);
+background-color: honeydew;
+padding:10px;
+}
+.event-heading{
+  font-weight:500;
+}
+.event-details{
+  font-weight:400;
+  color:rgb(121, 120, 120);
+}
+.container{
+  margin-top:18px;
+}
+.empSalary-header{
+  font-weight:500;
+}
+.canvamatCard{
+  background-color: honeydew;
+}
+.matcontainer{
+  padding-top:20px;
+  // border:1px solid grey;
+}

@@ -1,0 +1,8 @@
+<div fxLayoutAlign="end end" class="addBtn">
+  <mat-icon (click)="onRegister()">add</mat-icon>
+</div>
+<div *ngIf="elementData.length">
+  <app-dynamictable [column]="columns" [record]="elementData" [actionArray]=" actionArray"
+   [displayedColumns]="displayedColumn" (actionEmit)="onClick($event)">
+  </app-dynamictable>
+</div>

@@ -1,0 +1,142 @@
+<div>
+  <div fxLayout="row" fxLayoutAlign="space-around center" class="details" fxLayout.lt-sm="column">
+    <div fxLayout="row" class="emp-details" fxLayoutGap="20px">
+      <mat-icon class="details-icon" fxLayoutAlign="center center">group</mat-icon>
+      <div fxLyout="column">
+        <h3 class="counts">{{employeesCount}} </h3>
+        <p class="count-name">Employees</p>
+      </div>
+    </div>
+    <div fxLayout="row" class="roles-details" fxLayoutGap="20px">
+      <mat-icon class="details-icon" fxLayoutAlign="center center">category</mat-icon>
+      <div fxLyout="column">
+        <h3 class="counts">{{rolesCount}}</h3>
+        <p class="count-name">Roles</p>
+      </div>
+    </div>
+    <div fxLayout="row" class="dept-details" fxLayoutGap="20px">
+      <mat-icon class="details-icon" fxLayoutAlign="center center">table_chart</mat-icon>
+      <div fxLyout="column">
+        <h3 class="counts">{{DepartmentsCount}}</h3>
+        <p class="count-name">Departments</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div fxLayout="row wrap" fxLayoutGap="20px grid" class="matcontainer">
+  <div *ngIf="Salarydatas?.length">
+    <app-linechart [xaxis]="Salarylabels" [yaxis]="Salarydatas" [labelsDef]="SalarylabelDef"
+      [canvaID]="canvaId1"></app-linechart>
+  </div>
+  <div *ngIf="Roledatas?.length">
+    <app-linechart [xaxis]="Rolelabels" [yaxis]="Roledatas" [labelsDef]="RolelabelDef"
+      [canvaID]="canvaId2"></app-linechart>
+  </div>
+  <div *ngIf="Deptdatas?.length">
+    <app-linechart [xaxis]="Deptlabels" [yaxis]="Deptdatas" [labelsDef]="DeptlabelDef"
+      [canvaID]="canvaId3"></app-linechart>
+  </div>
+  <div *ngIf="Empdatas?.length">
+    <app-linechart [xaxis]="Emplabels" [yaxis]="Empdatas" [labelsDef]="EmplabelDef"
+      [canvaID]="canvaId4"></app-linechart>
+  </div>
+</div>
+<div style="margin-top:30px">
+  <div fxLayout="row" fxLayoutGap="20px">
+    <h3 class="select-head" fxLayoutAlign="start center">Select to view details</h3>
+    <form [formGroup]="userOptionForm">
+      <mat-form-field>
+        <mat-select formControlName="userOption" (selectionChange)="userSelectOption($event)">
+          <mat-option *ngFor="let items of selectArray" [value]="items.value">{{items.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <div fxLayoutAlign="end end" *ngIf="userOptionValue!==3 && userOptionValue">
+      <form [formGroup]="userSpecificForm">
+        <mat-form-field>
+          <mat-select formControlName="userSpecificOption" (selectionChange)="userSpecificOption($event)">
+            <mat-option *ngFor="let items of specificArray" [value]="items.name">{{items.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </div>
+    <div fxLayoutAlign="end end" *ngIf="userOptionValue === 3 && specificArray.length > 0">
+      <form [formGroup]="salarySpecificForm" fxLayout="row" fxLayoutGap="10px">
+        <div fxLayoutGap="10px">
+          <mat-label>Range between</mat-label>
+          <mat-form-field>
+            <mat-select formControlName="startAmount" (selectionChange)="startSalaryAmount($event)">
+              <mat-option *ngFor="let items of specificArray" [value]="items.value">{{items.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayoutGap="10px">
+          <mat-label>to</mat-label>
+          <mat-form-field>
+            <mat-select formControlName="EndAmount" (selectionChange)="endSalaryAmount($event)">
+              <mat-option *ngFor="let items of specificArray" [value]="items.value">{{items.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <button mat-button class="range-btn" (click)="onGetRangeValues()">Apply</button>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="elementData.length">
+    <mat-card style="padding:20px" *ngIf="userOptionValue">
+      <app-dynamictable [column]="columns" [record]="elementData" [displayedColumns]="displayedColumn">
+      </app-dynamictable>
+    </mat-card>
+  </div>
+</div>
+
+<div class="container">
+  <div class="events-head">
+    <h1 class="heading">Events</h1>
+  </div>
+  <div *ngFor="let event of events" class="event-container">
+    <h4 class="event-heading">{{event.Event_name}}</h4>
+    <p class="event-details">{{event.description}}</p>
+  </div>
+</div>
+<!-- <div class="container">
+  <h4 class="empSalary-header">Select specific Roles - Employees Salary</h4>
+  <div fxLayout="row" fxLayoutAlign="space-around end">
+    <mat-form-field>
+      <mat-label>Roles</mat-label>
+      <mat-select>
+        <mat-option></mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div >
+    <button mat-button [matMenuTriggerFor]="menu">Show As</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Table</button>
+      <button mat-menu-item>Chart</button>
+    </mat-menu>
+  </div>
+ </div>
+
+</div> -->
+<!-- <div style="height:60vh;" class="container" fxLayout="row" fxLayoutGap="10px">
+  <div fxLayout="row" fxFlex="60%">
+    <canvas id="canvas" >{{chart}}</canvas>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngFor="let x of chartChoice" (click)="onSelectChart(x)">{{x.Label}}</button>
+    </mat-menu>
+  </div>
+  <div  fxFlex="50%" fxLayout="row">
+    <mat-card fxLayout="row" class="canvamatCard">
+    <canvas id="mycanvas" >{{mychart}}</canvas>
+    <button mat-icon-button [matMenuTriggerFor]="menus">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menus="matMenu">
+      <button mat-menu-item *ngFor="let x of countChoice" (click)="onSelectCount(x)">{{x.Label}}</button>
+    </mat-menu>
+  </mat-card>
+  </div>
+</div> -->
